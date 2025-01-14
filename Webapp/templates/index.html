@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Sleep Time Prediction</h1>
+        <form id="prediction-form" class="mt-4">
+            <h3>Daily Habits</h3>
+            <div class="mb-3">
+                <label for="workout_time" class="form-label">Workout Time (hours):</label>
+                <input type="number" step="0.5" id="workout_time" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="reading_time" class="form-label">Reading Time (hours):</label>
+                <input type="number" step="0.5" id="reading_time" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="phone_time" class="form-label">Phone Time (hours):</label>
+                <input type="number" step="0.5" id="phone_time" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="work_hours" class="form-label">Work Hours:</label>
+                <input type="number" step="0.5" id="work_hours" class="form-control" required>
+            </div>         
+            <div class="mb-3">
+                <label for="caffeine_intake" class="form-label">Caffeine Intake (mg):</label>
+                <input type="number" step="5" id="caffeine_intake" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="relaxation_time" class="form-label">Relaxation Time (hours):</label>
+                <input type="number" step="0.5" id="relaxation_time" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Predict</button>
+        </form>
+        <div id="result" class="mt-4"></div>
+    </div>
+    <script>
+        document.getElementById('prediction-form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const data = {
+                workout_time: document.getElementById('workout_time').value,
+                reading_time: document.getElementById('reading_time').value,
+                phone_time: document.getElementById('phone_time').value,
+                work_hours: document.getElementById('work_hours').value,
+                caffeine_intake: document.getElementById('caffeine_intake').value,
+                relaxation_time: document.getElementById('relaxation_time').value,
+            };
+            const response = await fetch('/predict', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            });
+            const result = await response.json();
+            document.getElementById('result').innerHTML = `<h3>Predicted Sleep Hours: ${result.predicted_sleep_hours}</h3>`;
+        });
+    </script>
+</body>
+</html>
