@@ -37,7 +37,7 @@ For our project, we utilized supervised learning to predict the average daily sl
 ## **Preparation of Data and Quality Assessment**
 ### **Eliminated Null Values**
 
-![SQL_Query](assests/SQL_Query.png)
+![SQL_Query](assests/Query.png)
 
 ### **Renamed Columns and Exported the Data to a CSV File**
 
@@ -68,7 +68,7 @@ A random forest model was used to predict the average daily sleep duration based
   * Divided the data into training and testing sets using the train_test_split function
   * Standardized the feature data (X) using the StandardScaler function
 
-  ![Split](assests/Split.png)
+  ![Split](assests/Split_Data.png)
 
 ### **Training, Fitting, and Predicting with the Random Forest Model**
   * Taught the model using a training dataset
