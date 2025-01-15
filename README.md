@@ -64,11 +64,11 @@ A random forest model was used to predict the average daily sleep duration based
 
   ![Lables_Features](assests/Labels_Features.png)
 
-### **Split Data into Training/Testing Sets and Standardize**
+### **Split Data into Training/Testing Sets**
   * Divided the data into training and testing sets using the train_test_split function
   * Standardized the feature data (X) using the StandardScaler function
 
-  ![Split_Scale](assests/Split_Scale.png)
+  ![Split](assests/Split.png)
 
 ### **Training, Fitting, and Predicting with the Random Forest Model**
   * Taught the model using a training dataset
